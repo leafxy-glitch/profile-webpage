@@ -1,0 +1,196 @@
+:root {
+  --bg: #f3f8f4;
+  --paper: #ffffff;
+  --ink: #16211d;
+  --muted: #52635b;
+  --line: #d6e3db;
+  --accent: #14795b;
+  --accent-soft: #d9f5ea;
+  --shadow: 0 20px 45px rgba(20, 46, 36, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 15%, #e8f9f0 0%, transparent 35%),
+    radial-gradient(circle at 82% 9%, #edf2ff 0%, transparent 32%),
+    var(--bg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.bg-shape {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.bg-shape-1 {
+  width: 280px;
+  height: 280px;
+  border-radius: 40% 60% 65% 35%;
+  background: linear-gradient(135deg, #94d8be, #7fc6ff);
+  top: -80px;
+  right: -90px;
+  opacity: 0.4;
+}
+
+.bg-shape-2 {
+  width: 340px;
+  height: 340px;
+  border-radius: 55% 45% 35% 65%;
+  background: linear-gradient(140deg, #bde9d6, #fde3af);
+  left: -110px;
+  bottom: -120px;
+  opacity: 0.35;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1040px, 92vw);
+  margin: 0 auto;
+  padding: 56px 0 72px;
+}
+
+.hero {
+  background: color-mix(in srgb, var(--paper) 90%, #d6f2e7 10%);
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  padding: 34px;
+  box-shadow: var(--shadow);
+  animation: slideIn 650ms ease-out both;
+}
+
+.hero-tag {
+  margin: 0;
+  display: inline-block;
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 7px 11px;
+  border-radius: 999px;
+}
+
+h1 {
+  margin: 14px 0 10px;
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-size: clamp(2rem, 5.2vw, 3.15rem);
+  line-height: 1.05;
+}
+
+.hero-subtitle {
+  margin: 0;
+  max-width: 66ch;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.grid {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.card {
+  grid-column: span 6;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 24px rgba(27, 56, 44, 0.08);
+  transform: translateY(14px);
+  opacity: 0;
+  animation: reveal 550ms ease-out forwards;
+}
+
+.card:nth-child(1) {
+  animation-delay: 120ms;
+}
+
+.card:nth-child(2) {
+  animation-delay: 180ms;
+}
+
+.card:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+.card:nth-child(4) {
+  animation-delay: 300ms;
+}
+
+.card:nth-child(5) {
+  animation-delay: 360ms;
+  grid-column: 3 / span 8;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.22rem;
+  line-height: 1.35;
+}
+
+.card p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-18px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes reveal {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .card,
+  .card:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .page {
+    padding: 36px 0 48px;
+  }
+
+  .hero {
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.98rem;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 16px;
+  }
+}
